@@ -36,7 +36,6 @@ function validInput(string) {
 }
 
 function showResult(value) {
-    const bmiValment = document.getElementById('bmiValue');
 
     if (value) {
         Array.prototype.forEach.call(weltion, function (input) {
@@ -47,6 +46,13 @@ function showResult(value) {
         });
 
         document.getElementById('current_bmi').innerText = value;
+        if (value <= 18.5) {
+            document.getElementById('vatail').innerHTML = "<p>Your BMI suggests you’re underweight. Your ideal weight is between <strong>53.5kgs - 72.0kgs<strong>.<p>";
+        } else if (value >= 25.0) {
+            document.getElementById('vatail').innerHTML = "<p>Your BMI suggests you’re overweight. Your ideal weight is between <strong> 66.8kgs - 89.9kgs<strong>.<p>";
+        } else if (value >= 30.0) {
+            document.getElementById('vatail').innerHTML = "<p>Your BMI suggests you’re Obese. Please take care of your health.<p>";
+        } else { };
         console.log(value);
     } else {
         Array.prototype.forEach.call(rection, function (input) {
@@ -59,7 +65,7 @@ function showResult(value) {
     }
 
 }
-function calculateMetricBMI() {
+function calculateBMI() {
     const height = document.getElementById('metric_height').value;
     const weight = document.getElementById('metric_weight').value;
 
@@ -80,6 +86,6 @@ for (let i = 0; i < allInputs.length; i++) {
 
 
 Array.prototype.forEach.call(metInputs, function (input) {
-    input.addEventListener('keyup', calculateMetricBMI);
+    input.addEventListener('keyup', calculateBMI);
 });
 
